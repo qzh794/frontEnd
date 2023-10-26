@@ -1,0 +1,10 @@
+// ts用于node.js环境的配置
+{
+  "extends": "@vue/tsconfig/tsconfig.node.json",
+  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*"],
+  "compilerOptions": {
+	  // 是否编译构建引用项目
+    "composite": true,
+    "types": ["node"]
+  }
+}
