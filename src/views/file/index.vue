@@ -38,7 +38,7 @@
 											@click="changeClick(row.download_number,row.id)">下载文件</a>
 									</template>
 								</el-button>
-								<el-button type="danger" @click="deleteFile(row.id)">删除</el-button>
+								<el-button type="danger" @click="deleteFile(row)">删除</el-button>
 							</div>
 						</template>
 					</el-table-column>
@@ -145,8 +145,8 @@
 	}
 
 	const tip = ref()
-	const deleteFile = (id: number) => {
-		bus.emit('deleteFile', id)
+	const deleteFile = (row: any) => {
+		bus.emit('deleteFile', row)
 		tip.value.open()
 	}
 </script>

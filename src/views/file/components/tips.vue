@@ -23,16 +23,18 @@
 	const title = ref<string>()
 	// 消息ID
 	const fileId = ref<number>()
+  // 文件名
+  const fileName = ref<string>()
 
-	bus.on('deleteFile', (id? :number) => {
+	bus.on('deleteFile', (row :any) => {
 		title.value = '删除文件'
-    fileId.value = id
+    fileId.value = row.id
+    fileName.value = row.file_name
 	})
 	const emit = defineEmits(['success'])
 
 	const operationFiles = async () => {
-		if (title.value == '删除文件') {
-			const res = await deleteFile(fileId.value as number)
+			const res = await deleteFile(fileId.value as number,fileName.value as string)
 			if (res.status == 0) {
 				ElMessage({
 					message: '删除文件成功',
@@ -44,7 +46,6 @@
 				ElMessage.error('删除文件失败')
 				dialogFormVisible.value = false
 			}
-		}
 	}
 
 

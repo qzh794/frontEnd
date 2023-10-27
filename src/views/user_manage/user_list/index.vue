@@ -108,7 +108,7 @@
 
 	// 通过账号进行搜索
 	const searchUserByAccount = async () => {
-		tableData.value = await searchUser(adminAccount.value as number) as any
+		tableData.value = await searchUser(adminAccount.value as number,'用户') as any
 	}
 	// 部门数据
 	const departmentData = ref([])

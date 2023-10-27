@@ -90,27 +90,25 @@
 			{ required: true, message: '请输入要修改的部门', trigger: 'blur' },
 		],
 	})
-	const emit = defineEmits(['success'])
 	// 编辑用户
 	const edit = async () => {
 		const res = await editAdmin(formDataInfo)
 		if (res.status == 0) {
 			ElMessage({
-				message: '创建用户成功',
+				message: '编辑用户信息成功',
 				type: 'success',
 			})
 			bus.emit('offDialog',1)
-			emit('success')
 			dialogFormVisible.value = false
 		} else {
-			ElMessage.error('创建用户失败')
+			ElMessage.error('编辑用户信息失败')
 			dialogFormVisible.value = false
 		}
 	}
 	// 弹窗开关
 	const dialogFormVisible = ref(false)
 
-	// 打开创建管理员的弹窗
+	// 打开编辑管理员的弹窗
 	const open = () => {
 		dialogFormVisible.value = true
 	}

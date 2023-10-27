@@ -140,12 +140,13 @@ export const changeIdentityToAdmin = (id:number, identity:string) => {
 }
 
 // 通过账号对用户搜索
-export const searchUser = (account:number) => {
+export const searchUser = (account:number,identity:string) => {
 	return instance({
 		url: '/user/searchUser',
 		method: 'POST',
 		data: {
-			account
+			account,
+      identity
 		}
 	})
 }

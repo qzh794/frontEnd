@@ -8,7 +8,7 @@
 				<!-- 搜索框 -->
 				<div class="search-wrapped">
 					<el-input v-model="adminAccount" class="w-50 m-2" size="large" placeholder="输入账号进行搜索"
-					 @change='searchAdmin()' >
+					 @change='searchAdmin()' clearable @clear="clearInput()">
           <template #prefix>
             <Search />
           </template>
@@ -84,7 +84,7 @@
 	const tableData = ref<object[]>([])
 
 	const searchAdmin = async () => {
-		tableData.value = await searchUser(adminAccount.value as number) as any
+		tableData.value = await searchUser(adminAccount.value as number,'产品管理员') as any
 	}
 	// 分页数据
 	const paginationData = reactive({
@@ -111,6 +111,11 @@
 		paginationData.currentPage = value
 		tableData.value = await returnListData(paginationData.currentPage, '产品管理员') as any
 	}
+
+  // 当搜索内容清空后,返回当前页面的数据
+  const clearInput = async () =>{
+    tableData.value = await returnListData(paginationData.currentPage, '产品管理员') as any
+  }
 
 	bus.on('adminDialogOff', async (id : number) => {
 		// 当前页数
