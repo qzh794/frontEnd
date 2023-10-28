@@ -7,6 +7,7 @@ import {
 } from '@/api/dep_msg'
 import {ref} from "vue";
 
+// 使用了setup写法
 export const useMsg = defineStore('messageinfor', ()=>{
 	const read_list = ref<number[]>([])
 	const msg_list =ref<any[]>([])
