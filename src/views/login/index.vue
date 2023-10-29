@@ -78,9 +78,11 @@
 	} from '@/api/login'
 	import { loginLog } from '@/api/log'
 	import { useUserInfo } from '@/stores/userinfor'
+  import {useMenu} from '@/stores/menu'
 	const activeName = ref('first')
 	const router = useRouter()
 	const store = useUserInfo()
+  const menuStore = useMenu()
 	// 表单接口
 	interface FormData {
 		account : number|null;
@@ -102,7 +104,7 @@
 	// 登录
 	const Login = async () => {
 		const res = await login(loginData) as any
-		// console.log(res)
+		console.log(res)
 		if (res.message == "登录成功") {
 			ElMessage({
 				message: '登录成功',
@@ -114,8 +116,10 @@
 			localStorage.setItem('token', token)
 			localStorage.setItem('name', name)
 			localStorage.setItem('department', department)
+      await menuStore.setRouter()
 			await loginLog(account,name,email)
 			await store.userInfo(id)
+
 			// 跳转
 			await router.push('/home')
 		} else {

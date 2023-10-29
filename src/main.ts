@@ -29,4 +29,15 @@ app.use(ElementPlus, {
 	locale: zhCn,
 })
 
-app.use(router).use(pinia).mount('#app')
+app.use(pinia)
+
+// import {useMenu} from '@/stores/menu'
+// const menuStore = useMenu()
+// const addRouter = () =>{
+//   menuStore.setRouter()
+// }
+// addRouter()
+app.use(router)
+
+app.mount('#app')
+

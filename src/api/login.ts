@@ -32,6 +32,17 @@ export const login = (data:any) => {
 	})
 }
 
+// 获取用户路由列表
+export const returnMenuList = (id:number) => {
+  return instance({
+    url: '/api/returnMenuList',
+    method: 'POST',
+    data: {
+      id
+    }
+  })
+}
+
 // 忘记密码验证
 export const verify = (data:any) => {
 	const {
