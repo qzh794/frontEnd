@@ -10,7 +10,7 @@ export const useUserInfo = defineStore('userinfo',()=> {
 
 	const userInfo = async (id:number) =>{
 		const res = await getUserInfo(id) as any
-		imageUrl.value = res.imageUrl
+    imageUrl.value = res.image_url
 	}
 
 	return {

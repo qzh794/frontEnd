@@ -18,6 +18,8 @@ import 'virtual:svg-icons-register'
 // 引入全局样式
 import '@/assets/css/common.scss'
 
+import './guardian'
+
 // 创建实例
 const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue) as any) {

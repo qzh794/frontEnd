@@ -14,7 +14,7 @@
 <script lang="ts" setup>
 	import { ref } from 'vue'
 	import {
-		clearloginLogList
+    clearLoginLogList
 	} from '@/api/log'
 	import { ElMessage } from 'element-plus'
 
@@ -22,7 +22,7 @@
 	const emit = defineEmits(['success'])
 
 	const clearList = async () => {
-		const res = await clearloginLogList()
+		const res = await clearLoginLogList()
 		if (res.status == 0) {
 			ElMessage({
 				message: '清空列表成功',

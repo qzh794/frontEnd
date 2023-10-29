@@ -14,6 +14,11 @@ const routes = [{
 		path: '/login',
 		component: () => import('@/views/login/index.vue')
 	},
+  {
+    name: 'error',
+    path: '/error',
+    component: () => import('@/views/error/index.vue')
+  },
 	{
 		name: 'menu',
 		path: '/menu',

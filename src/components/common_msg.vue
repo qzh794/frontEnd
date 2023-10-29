@@ -34,7 +34,7 @@
 		bus
 	} from "@/utils/mitt.js"
 	const title = ref()
-	bus.on('homeCompany', (row: any) => {
+	bus.on('homeCompany', (row) => {
 		title.value = '公司公告'
     messageInfo.message_title = row.message_title
     messageInfo.message_content = row.message_content
@@ -45,7 +45,7 @@
     messageInfo.message_publish_time = row.message_publish_time
 	})
 
-	bus.on('homeSystem', (row: any) => {
+	bus.on('homeSystem', (row) => {
 		title.value = '系统消息'
     messageInfo.message_title = row.message_title
     messageInfo.message_content = row.message_content
@@ -66,9 +66,9 @@
 		message_publish_time: string;
 	}
 
-	const messageInfo: message = reactive({
-		message_title: '',
-		message_content: '',
+	const messageInfo = reactive({
+	  message_title: '',
+    message_content: '',
 		message_publish_department: '',
 		message_category: '',
 		message_level: '',

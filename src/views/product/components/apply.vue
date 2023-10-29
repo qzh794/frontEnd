@@ -57,7 +57,7 @@
 		product_in_warehouse_number : number|null,
 		product_single_price:number|null,
 		product_out_number : number|null,
-		product_out_apply_person : string,
+		product_out_apply_person : string|null,
 		apply_memo : string,
 	}
 

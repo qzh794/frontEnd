@@ -57,7 +57,7 @@
 	import tips from './components/tips.vue'
 	import {
 		operationLogListLength,
-		returnOpeartionListData,
+		returnOperationListData,
 		searchOperationLogList
 	} from '@/api/log'
 	import {
@@ -92,7 +92,7 @@
 	getOperationListLength()
 	// 默认获取操作次数列表第一页的数据
 	const getOperationFirstPageList = async () => {
-		tableData.value = await returnOpeartionListData(1) as any
+		tableData.value = await returnOperationListData(1) as any
 	}
 	getOperationFirstPageList()
 
@@ -100,7 +100,7 @@
 	// 操作次数列表监听换页
 	const operationCurrentChange = async (value: number) => {
 		paginationData.operationCurrentPage = value
-		tableData.value = await returnOpeartionListData(paginationData.operationCurrentPage) as any
+		tableData.value = await returnOperationListData(paginationData.operationCurrentPage) as any
 	}
 	const name = ref()
 	// 搜索之后函数

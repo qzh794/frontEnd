@@ -103,13 +103,13 @@
 	const Login = async () => {
 		const res = await login(loginData) as any
 		// console.log(res)
-		const { id, name,account,email,department } = res.results
-		const { token } = res
 		if (res.message == "登录成功") {
 			ElMessage({
 				message: '登录成功',
 				type: 'success',
 			})
+      const { id, name,account,email,department } = res.results
+      const { token } = res
 			localStorage.setItem('id', id)
 			localStorage.setItem('token', token)
 			localStorage.setItem('name', name)
