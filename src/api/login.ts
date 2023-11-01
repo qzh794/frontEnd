@@ -32,8 +32,7 @@ export const login = (data:any) => {
 	})
 }
 
-// 获取用户路由列表
-export const returnMenuList = (id:number) => {
+export const returnMenuList = (id:number) =>{
   return instance({
     url: '/api/returnMenuList',
     method: 'POST',

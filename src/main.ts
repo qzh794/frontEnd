@@ -20,6 +20,8 @@ import '@/assets/css/common.scss'
 
 import './guardian'
 
+console.log(import.meta.glob("@/views/**/*.vue"))
+
 // 创建实例
 const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue) as any) {
@@ -31,13 +33,10 @@ app.use(ElementPlus, {
 
 app.use(pinia)
 
-// import {useMenu} from '@/stores/menu'
-// const menuStore = useMenu()
-// const addRouter = () =>{
-//   menuStore.setRouter()
-// }
-// addRouter()
-app.use(router)
+import {useMenu} from "@/stores/menu";
+const menuRouter = useMenu()
+menuRouter.addRouter()
 
-app.mount('#app')
+
+app.use(router).mount('#app')
 

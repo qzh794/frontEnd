@@ -74,7 +74,7 @@
 	import { useRouter } from 'vue-router'
 	import forget from './components/forget_password.vue'
 	import {
-		login, register
+		login, register,returnMenuList
 	} from '@/api/login'
 	import { loginLog } from '@/api/log'
 	import { useUserInfo } from '@/stores/userinfor'
@@ -113,15 +113,16 @@
       const { id, name,account,email,department } = res.results
       const { token } = res
 			localStorage.setItem('id', id)
+      const routerList = await returnMenuList(id) as any
+      menuStore.setRouter(routerList)
 			localStorage.setItem('token', token)
 			localStorage.setItem('name', name)
 			localStorage.setItem('department', department)
-      await menuStore.setRouter()
 			await loginLog(account,name,email)
 			await store.userInfo(id)
 
 			// 跳转
-			await router.push('/home')
+			router.push('/home')
 		} else {
 			ElMessage.error('登录失败')
 		}
