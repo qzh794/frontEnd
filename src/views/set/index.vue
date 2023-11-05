@@ -75,7 +75,7 @@
 						</div>
 					</div>
 				</el-tab-pane>
-				<el-tab-pane label="公司信息" name="second">
+				<el-tab-pane label="公司信息" name="second" v-if="userStore.identity=='超级管理员'">
 					<div class="account-info-wrapped">
 						<span>公司名称</span>
 						<div class="account-info-content">
@@ -110,7 +110,7 @@
 						</div>
 					</div>
 				</el-tab-pane>
-				<el-tab-pane label="首页管理" name="third">
+				<el-tab-pane label="首页管理" name="third" v-if="userStore.identity=='超级管理员'">
 					<div class="home-wrapped">
 						<!-- 提示 -->
 						<div class="tips">
@@ -134,7 +134,7 @@
 				</el-tab-pane>
 				<el-tab-pane label="其他设置" name="fourth">
 					<div class="other-set">
-						<div class="department-set">
+						<div class="department-set" v-if="userStore.identity!=='用户管理员'||userStore.identity!=='用户'">
 							<span>部门设置</span>
 							<el-tag v-for="tag in dynamicTags" :key="tag" class="mx-1" closable
 								:disable-transitions="false" @close="handleClose(tag)">
@@ -146,7 +146,7 @@
 								+ 添加部门
 							</el-button>
 						</div>
-						<div class="product-set">
+						<div class="product-set" v-if="userStore.identity=='超级管理员'||userStore.identity=='产品管理员'">
 							<span>产品设置</span>
 							<el-tag v-for="tag in dynamicProductTags" :key="tag" class="mx-1" closable
 								:disable-transitions="false" @close="handleProductClose(tag)">

@@ -174,7 +174,7 @@
 		searchProductForId,
 		searchProductForApplyId,
 		getProductLength,
-		getApplyProdcutLength,
+    getApplyProductLength,
 		returnProductListData,
 		returnApplyProductListData,
 	} from '@/api/product'
@@ -240,7 +240,7 @@
 	getProductListLength()
 	// 获取审核列表的页数
 	const getApplyProductListLength = async () => {
-		const res = await getApplyProdcutLength() as any
+		const res = await getApplyProductLength() as any
 		paginationData.applyProductTotal = res.length
 		paginationData.applyProductCount = Math.ceil(res.length / 10)
 	}

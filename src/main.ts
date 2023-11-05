@@ -20,7 +20,6 @@ import '@/assets/css/common.scss'
 
 import './guardian'
 
-console.log(import.meta.glob("@/views/**/*.vue"))
 
 // 创建实例
 const app = createApp(App)

@@ -144,9 +144,9 @@ export const getProductLength = () => {
 }
 
 // 获取申请出库产品总数
-export const getApplyProdcutLength = () => {
+export const getApplyProductLength = () => {
 	return instance({
-		url: '/pro/getApplyProdcutLength',
+		url: '/pro/getApplyProductLength',
 		method: 'POST',
 	})
 }

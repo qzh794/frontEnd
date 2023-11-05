@@ -70,72 +70,20 @@
 		bus
 	} from "@/utils/mitt.js"
 	import { searchUser, getAdminListLength, returnListData } from '@/api/userinfor'
-
+  import {useTable} from '@/hooks'
+  const {   adminAccount,
+    paginationData,
+    adminTotal,
+    tableData,
+    currentChange,
+    searchAdmin,
+    clearInput} = useTable('产品管理员')
 	// 面包屑
 	const breadcrumb = ref()
 	// 面包屑参数
 	const item = ref({
 		first: '用户管理',
 		second:'产品管理员'
-	})
-	// 搜索框的modelValue
-	const adminAccount = ref<number>()
-	// 表格内容
-	const tableData = ref<object[]>([])
-
-	const searchAdmin = async () => {
-		tableData.value = await searchUser(adminAccount.value as number,'产品管理员') as any
-	}
-	// 分页数据
-	const paginationData = reactive({
-		// 总页数
-		pageCount: 1,
-		// 当前所处页数
-		currentPage: 1,
-	})
-	const adminTotal = ref<number>(0)
-	// 获取管理员的数量
-	const returnAdminListLength = async () => {
-		const res = await getAdminListLength('产品管理员') as any
-		adminTotal.value = res.length
-		paginationData.pageCount = Math.ceil(res.length / 10)
-	}
-	returnAdminListLength()
-	// 默认获取第一页的数据
-	const getFirstPageList = async () => {
-		tableData.value = await returnListData(1, '产品管理员') as any
-	}
-	getFirstPageList()
-	// 监听换页
-	const currentChange = async (value : number) => {
-		paginationData.currentPage = value
-		tableData.value = await returnListData(paginationData.currentPage, '产品管理员') as any
-	}
-
-  // 当搜索内容清空后,返回当前页面的数据
-  const clearInput = async () =>{
-    tableData.value = await returnListData(paginationData.currentPage, '产品管理员') as any
-  }
-
-	bus.on('adminDialogOff', async (id : number) => {
-		// 当前页数
-		const current = paginationData.currentPage
-		// 1为创建管理员
-		if (id == 1) {
-			await getFirstPageList()
-		}
-		// 2为编辑管理员
-		if (id == 2) {
-			tableData.value = await returnListData(paginationData.currentPage, '产品管理员') as any
-		}
-		// 3为对管理员进行降职
-		if (id == 3) {
-			tableData.value = await returnListData(paginationData.currentPage, '产品管理员') as any
-			if (tableData.value.length == 0) {
-				paginationData.currentPage = current - 1
-				await returnAdminListLength()
-			}
-		}
 	})
 
 	// 创建管理员

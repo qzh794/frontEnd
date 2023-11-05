@@ -104,7 +104,6 @@
 	// 登录
 	const Login = async () => {
 		const res = await login(loginData) as any
-		console.log(res)
 		if (res.message == "登录成功") {
 			ElMessage({
 				message: '登录成功',
