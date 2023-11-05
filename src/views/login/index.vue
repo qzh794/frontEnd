@@ -104,11 +104,7 @@
 	// 登录
 	const Login = async () => {
 		const res = await login(loginData) as any
-		if (res.message == "登录成功") {
-			ElMessage({
-				message: '登录成功',
-				type: 'success',
-			})
+		if (res.status == 0) {
       const { id, name,account,email,department } = res.results
       const { token } = res
 			localStorage.setItem('id', id)
@@ -119,11 +115,8 @@
 			localStorage.setItem('department', department)
 			await loginLog(account,name,email)
 			await store.userInfo(id)
-
 			// 跳转
 			router.push('/home')
-		} else {
-			ElMessage.error('登录失败')
 		}
 	}
 
@@ -132,17 +125,9 @@
 	const Register = async () => {
 		if (registerData.password == registerData.rePassword) {
 			const res = await register(registerData) as any
-			if (res.message == "注册账号成功") {
-				ElMessage({
-					message: '注册成功',
-					type: 'success',
-				})
+			if (res.status == 0) {
 				activeName.value = 'first'
-			} else {
-				ElMessage.error('注册失败，请检查数据是否正确')
 			}
-		} else {
-			ElMessage.error('注册失败')
 		}
 	}
 
